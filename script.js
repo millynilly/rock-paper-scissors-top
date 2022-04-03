@@ -14,7 +14,6 @@ function playRound(playerSelection, computerSelection) {
         : 'Win'
 }
 
-
 function game() {
     let score = [0, 0]
     let player
@@ -36,15 +35,14 @@ function game() {
             
             result === 'Win' ? score[0]++
             : result === 'Lose' ? score[1]++
-            : null /*do nothing*/
+            : null
             
             console.log('Score: ' + score[0] + ' - ' + score[1])
 
         } else {
-            console.log(player + ' Not a valid entry. Please try again.')
+            console.log('Not a valid entry. Please try again.')
         }
-    }
-    
+    }   
     console.log(score[0] === 5 ? 'You win!' : 'Computer wins :(')
 }
 
