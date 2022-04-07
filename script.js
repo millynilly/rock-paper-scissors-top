@@ -22,6 +22,8 @@ function playRound(playerSelection, computerSelection) {
 
     let p = options.indexOf(playerSelection)
     let c = options.indexOf(computerSelection)
+
+    /* % does not work as expected on neg numbers. This does.*/
     let diff = (((p - c) % 5) + 5) % 5
     
     let result = diff === 0 ? 0
