@@ -1,18 +1,65 @@
 const options = ['Rock', 'Spock', 'Paper', 'Lizard', 'Scissors']
+const resultPrint = ['Tie :|', 'Win :)', 'Lose :(']
+let score = [0, 0]
+
+const btns = document.querySelectorAll('button')
+console.log(btns)
+
+/*Add button event listeners*/
+btns.forEach( (btn) => {
+    btn.addEventListener('click', () => {
+        result = playRound(btn.id, computerPlay())
+        updateScore(result)
+        isGameEnd()
+    })
+})
 
 function computerPlay() {   
     return options[Math.floor(Math.random()*5)]
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) { 
 
     let player = options.indexOf(playerSelection)
     let computer = options.indexOf(computerSelection)
     let diff = (player - computer) % 5
+    console.log('Diff: ' + diff)
+    let result = diff === 0 ? 0
+        : diff === 1 || diff === 2 ? 1
+        : 2
+    console.log(result)
+    console.log('You played: ' + playerSelection)
+    console.log('Computer played: ' + computerSelection)
+    console.log(resultPrint[result])
+    
+    return result
+}
 
-    return diff === 0 ? 'Tie :|'
-        : diff === 1 || diff === 2 ? 'Win :)'
-        : 'Lose :('
+
+function updateScore(result) {
+
+    result === 1 ? score[0]++
+        : result === 2 ? score[1]++
+        : null
+
+    console.log('Score: ' + score[0] + ' - ' + score[1])
+}
+
+
+function isGameEnd() {
+    
+    const winScore = 3
+
+    if (score[0] === winScore || score[1] === winScore) {
+        console.log('Game over')
+        console.log('Play again?')
+        return true
+    }
+    return false
+}
+
+function newGame() {
+    score = [0, 0]
 }
 
 function game() {
@@ -53,26 +100,26 @@ function game() {
 
 /*Helper functions*/
 
-function capitalise(word) {
+// function capitalise(word) {
 
-    /*Capitalises the first letter and converts the rest to lowercase*/
-    return !/^[a-zA-Z]/.test(word) ? word
-        : word[0].toUpperCase() + word.slice(1).toLowerCase()
+//     /*Capitalises the first letter and converts the rest to lowercase*/
+//     return !/^[a-zA-Z]/.test(word) ? word
+//         : word[0].toUpperCase() + word.slice(1).toLowerCase()
 
-}
+// }
 
-function getPlayerInput() {
+// function getPlayerInput() {
 
-    let player = window.prompt('Enter rock, paper, or scissors')
+//     let player = window.prompt('Enter rock, paper, or scissors')
     
-    /*If Cancel clicked return null*/
-    if (player === null) {
-        console.log('Game terminated.')
-        return null
-    }
-    return player
-}
+//     /*If Cancel clicked return null*/
+//     if (player === null) {
+//         console.log('Game terminated.')
+//         return null
+//     }
+//     return player
+// }
 
-game()
+//game()
 
 
