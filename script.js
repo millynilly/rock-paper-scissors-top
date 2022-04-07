@@ -10,7 +10,7 @@ btns.forEach( (btn) => {
     btn.addEventListener('click', () => {
         result = playRound(btn.id, computerPlay())
         updateScore(result)
-        isGameEnd()
+        if (isGameEnd()) { score = [0, 0] }
     })
 })
 
@@ -20,14 +20,14 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) { 
 
-    let player = options.indexOf(playerSelection)
-    let computer = options.indexOf(computerSelection)
-    let diff = (player - computer) % 5
-    console.log('Diff: ' + diff)
+    let p = options.indexOf(playerSelection)
+    let c = options.indexOf(computerSelection)
+    let diff = (((p - c) % 5) + 5) % 5
+    
     let result = diff === 0 ? 0
         : diff === 1 || diff === 2 ? 1
         : 2
-    console.log(result)
+    
     console.log('You played: ' + playerSelection)
     console.log('Computer played: ' + computerSelection)
     console.log(resultPrint[result])
@@ -62,39 +62,39 @@ function newGame() {
     score = [0, 0]
 }
 
-function game() {
-    let score = [0, 0]
-    let player
-    let computer
-    const winScore = 3
+// function game() {
+//     let score = [0, 0]
+//     let player
+//     let computer
+//     const winScore = 3
     
-    while (score[0] < winScore && score[1] < winScore) {
+//     while (score[0] < winScore && score[1] < winScore) {
         
-        player = getPlayerInput()
-        if (player === null) { return null }
+//         player = getPlayerInput()
+//         if (player === null) { return null }
         
-        player = capitalise(player)
-        if (options.includes(player)) {
+//         player = capitalise(player)
+//         if (options.includes(player)) {
             
-            computer = computerPlay()
-            result = playRound(player, computer)
+//             computer = computerPlay()
+//             result = playRound(player, computer)
 
-            /*Update score*/
-            result === 'Win :)' ? score[0]++
-            : result === 'Lose :(' ? score[1]++
-            : null
+//             /*Update score*/
+//             result === 'Win :)' ? score[0]++
+//             : result === 'Lose :(' ? score[1]++
+//             : null
             
-            console.log('You played: ' + player)
-            console.log('Computer played: ' + computer)
-            console.log(result)
-            console.log('Score: ' + score[0] + ' - ' + score[1])
+//             console.log('You played: ' + player)
+//             console.log('Computer played: ' + computer)
+//             console.log(result)
+//             console.log('Score: ' + score[0] + ' - ' + score[1])
 
-        } else {
-            console.log('Not a valid entry. Please try again.')
-        }
-    }   
-    console.log(score[0] === 5 ? 'You win!' : 'Computer wins :(')
-}
+//         } else {
+//             console.log('Not a valid entry. Please try again.')
+//         }
+//     }   
+//     console.log(score[0] === 5 ? 'You win!' : 'Computer wins :(')
+// }
 
 
 
