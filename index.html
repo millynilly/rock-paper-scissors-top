@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,11 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <script src="./script.js" defer></script>
 </head>
+
 <body>
-    <h1>Rock-paper-scissors-lizard-Spock</h1>
+    <h1>Play rock-paper-scissors-lizard-Spock</h1>
+
     <div id="intro">
         <!--width="560" height="315"-->
-        <iframe width="360px"
+        <iframe width="360px" height="210px"
             src="https://www.youtube.com/embed/Z2Dwxv-EMTM"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -31,14 +34,22 @@
         </div>
         <hr>
     </div>
-    <div id="buttons">
-        <button id="Rock">ROCK</button>
-        <button id="Paper">PAPER</button>
-        <button id="Scissors">SCISSORS</button>
-        <button id="Lizard">LIZARD</button>
-        <button id="Spock">SPOCK</button>
+
+    <div id="play">
+        <p>Play the computer. First to 5 wins. Make your selection:</p>
+        <div id="buttons">
+            <button id="Rock">ROCK</button>
+            <button id="Paper">PAPER</button>
+            <button id="Scissors">SCISSORS</button>
+            <button id="Lizard">LIZARD</button>
+            <button id="Spock">SPOCK</button>
+        </div>
     </div>
-    <div id="result"></div>
+
+    <div>
+        <p id="round"></p>
+        <p id="result"></p>
+    </div>
 
 </body>
 </html>
